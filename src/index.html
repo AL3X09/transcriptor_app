@@ -1,0 +1,86 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transcriptor de Audio a Texto</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div id="app">
+      <h1>Transcriptor de Audio</h1>
+
+      <div class="card">
+        <h2>1. Archivos de audio</h2>
+        <div class="actions">
+          <button id="btn-add-files">Agregar archivo(s)...</button>
+          <button id="btn-clear-files" class="secondary">Limpiar lista</button>
+        </div>
+        <ul id="files-list"></ul>
+      </div>
+
+      <div class="card">
+        <h2>2. Opciones</h2>
+        <div class="grid">
+          <label>Modelo:</label>
+          <select id="sel-model">
+            <option value="tiny">tiny</option>
+            <option value="base">base</option>
+            <option value="small" selected>small</option>
+            <option value="medium">medium</option>
+            <option value="large-v3">large-v3</option>
+            <option value="large-v3-turbo">large-v3-turbo</option>
+          </select>
+
+          <label>Idioma:</label>
+          <select id="sel-lang">
+            <option value="Detección automática">Detección automática</option>
+            <option value="es">Español</option>
+            <option value="en">Inglés</option>
+            <option value="pt">Portugués</option>
+            <option value="fr">Francés</option>
+            <option value="de">Alemán</option>
+            <option value="it">Italiano</option>
+          </select>
+
+          <label>Calidad:</label>
+          <select id="sel-quality">
+            <option value="1">Rápida (beam=1)</option>
+            <option value="3" selected>Balanceada (beam=3)</option>
+            <option value="5">Precisa (beam=5)</option>
+          </select>
+
+          <label>Formato:</label>
+          <div>
+            <label><input type="radio" name="format" value="txt" checked> .txt</label>
+            <label><input type="radio" name="format" value="srt"> .srt</label>
+          </div>
+
+          <label>Carpeta salida:</label>
+          <div class="input-group">
+            <input type="text" id="input-out-dir" readonly>
+            <button id="btn-select-dir">Elegir...</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="actions main-action">
+        <button id="btn-start" class="primary">Iniciar transcripción</button>
+      </div>
+
+      <div class="progress-section">
+        <label>Progreso general:</label>
+        <progress id="prog-overall" max="100" value="0"></progress>
+
+        <label>Archivo actual: <span id="lbl-file-prog">0%</span></label>
+        <progress id="prog-file" max="100" value="0"></progress>
+      </div>
+
+      <div class="card">
+        <h2>3. Registro</h2>
+        <div id="log-container"></div>
+      </div>
+    </div>
+    <script type="module" src="main.js"></script>
+  </body>
+</html>
