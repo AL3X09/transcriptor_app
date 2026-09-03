@@ -1,0 +1,6 @@
+__pycache__/
+*.pyc
+.env
+server.log
+my-tauri-app/node_modules/
+my-tauri-app/src-tauri/target/

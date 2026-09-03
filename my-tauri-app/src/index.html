@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="styles.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Transcriptor App Tauri</title>
+  </head>
+  <body>
+    <main class="container">
+      <h1>Transcriptor App</h1>
+
+      <form class="row" id="transcribe-form">
+        <div>
+          <label for="file-input">Archivo de audio:</label>
+          <input type="file" id="file-input" accept="audio/*" required>
+        </div>
+
+        <div>
+          <label for="model-select">Modelo Whisper:</label>
+          <select id="model-select">
+            <option value="tiny">Tiny</option>
+            <option value="small" selected>Small</option>
+            <option value="base">Base</option>
+            <option value="medium">Medium</option>
+            <option value="large">Large</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="language-select">Idioma:</label>
+          <select id="language-select">
+            <option value="">Detección automática</option>
+            <option value="es">Español</option>
+            <option value="en">Inglés</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="format-select">Formato:</label>
+          <select id="format-select">
+            <option value="txt" selected>Texto Plano (.txt)</option>
+            <option value="srt">Subtítulos (.srt)</option>
+          </select>
+        </div>
+
+        <button type="submit" id="submit-btn">Iniciar Transcripción</button>
+      </form>
+
+      <div class="row">
+         <p id="status-msg"></p>
+      </div>
+
+      <div class="row">
+        <h2>Resultado:</h2>
+        <textarea id="result" rows="10" cols="50" readonly style="width: 100%;"></textarea>
+      </div>
+    </main>
+    <script type="module" src="/main.js"></script>
+  </body>
+</html>
